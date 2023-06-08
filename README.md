@@ -25,8 +25,9 @@ namespace BusTransitApp
     {
         public class Route
         {
-            public int Id {get; set;}
+            public string Id {get; set;}
             public float Fare {get; set;}
+            public Stop Stops {get; set;}
         }
     }
 
@@ -36,6 +37,7 @@ namespace BusTransitApp
         {
             public int Id {get; set;}
             public string Name {get; set;}
+            public Route Routes {get; set;}
         }
     }
 ```
@@ -52,7 +54,10 @@ namespace BusTransitApp.Data
         {
             if (!context.Routes.Any())
             {
-                ______________________________
+                var route1 = new Route(){Id = "Route 1", Fare = 1.99, Stops = new List<Stop>(){ stop1, stop2}};
+                var route2 = new Route(){Id = "Route 2", Fare = 2.99, Stops = new List<Stop>(){stop2}};
+                var stop1 = new Stop(){Id = 1, Name = "Stop 1", Routes = new List<Route>(){route1}};
+                var stop2 = new Stop(){Id = 2, Name = "Stop 2", Routes = new List<Route>(){route1, route2}};
             }
         }
     }
