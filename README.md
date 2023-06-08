@@ -54,10 +54,14 @@ namespace BusTransitApp.Data
         {
             if (!context.Routes.Any())
             {
-                var route1 = new Route(){Id = "Route 1", Fare = 1.99, Stops = new List<Stop>(){ stop1, stop2}};
-                var route2 = new Route(){Id = "Route 2", Fare = 2.99, Stops = new List<Stop>(){stop2}};
-                var stop1 = new Stop(){Id = 1, Name = "Stop 1", Routes = new List<Route>(){route1}};
-                var stop2 = new Stop(){Id = 2, Name = "Stop 2", Routes = new List<Route>(){route1, route2}};
+                var route1 = new Route(){Id = "Route 1", Fare = 1.99};
+                var route2 = new Route(){Id = "Route 2", Fare = 2.99};
+                var stop1 = new Stop(){Id = 1, Name = "Stop 1"};
+                var stop2 = new Stop(){Id = 2, Name = "Stop 2"};
+                route1.Stops = new List<Stop>(){stop1, stop2};
+                route2.Stops = new List<Stop>(){stop2};
+                stop1.Routes = new List<Route>(){route1};
+                stop2.Routes = new List<Route>(){route1, route2};
                 context.Routes.Add(route1);
                 context.Routes.Add(route2);
                 context.Stops.Add(stop1);
