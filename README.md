@@ -58,6 +58,11 @@ namespace BusTransitApp.Data
                 var route2 = new Route(){Id = "Route 2", Fare = 2.99, Stops = new List<Stop>(){stop2}};
                 var stop1 = new Stop(){Id = 1, Name = "Stop 1", Routes = new List<Route>(){route1}};
                 var stop2 = new Stop(){Id = 2, Name = "Stop 2", Routes = new List<Route>(){route1, route2}};
+                context.Routes.Add(route1);
+                context.Routes.Add(route2);
+                context.Stops.Add(stop1);
+                context.Stops.Add(stop2);
+                context.SaveChanges();
             }
         }
     }
